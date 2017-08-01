@@ -1,0 +1,19 @@
+{
+  "name": "buckanjaren",
+  "description": "media organisation",
+  "main": "",
+  "license": "MIT",
+  "homepage": "www.buckanjaren.se",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "html5-boilerplate": "^5.3.0"
+  }
+}
