@@ -45,9 +45,9 @@ class Article(models.Model):
     created_date = models.DateTimeField()
     text = models.TextField()
     comment = models.TextField()
-    author =
     editor = models.ForeignKey(User)
-    commentator =
+    author = models.CharField(max_length=80)
+    commentator = models.CharField(max_length=80)    
     slug = models.SlugField(max_length=40, unique=True)
     site = models.ForeignKey(Site)
     tags = models.ManyToManyField(Tag)
