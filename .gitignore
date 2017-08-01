@@ -1,0 +1,9 @@
+venv/
+*.pyc
+staticfiles
+.env
+
+# Text backups
+*.bak
+
+# Database
