@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
-from buc.models import Category, Article
+from buc.models import Category, Article, Tag
 
 # Create your views here.
 class HomeView(TemplateView):
