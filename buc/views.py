@@ -1,8 +1,25 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from buc.models import Category, Article
 
 # Create your views here.
+class HomeView(TemplateView):
+    template_name = "homeview.html"
+    
+    def main_feature(self):
+        return
+
+    def minitrue(self):
+        return
+    def latest_news(self):
+        return
+    def carousel_features(self):
+        return
+    def category_news(self):
+        return
+    def dockyard(self):
+        return
+
 class CategoryListView(ListView):
     def get_queryset(self):
         slug = self.kwargs['slug']
