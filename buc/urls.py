@@ -1,13 +1,19 @@
-from django.views.generic import HomeView, DetailView
-from buc.views import CategoryListView
+from django.conf.urls import url
+from django.views.generic import TemplateView, DetailView, ListView
+from buc.models import Article, Category, Tag
+from django.views.generic import ListView, DetailView
+from buc.views import CategoryListView, TagListView, HomeView, getSearchResults
+from django.contrib.sitemaps.views import sitemap
 
-from buc.models import Article
 
-urlpatterns = patterns[]'',
+
+urlpatterns = [
     # Index
     url('^$', HomeView.as_view(
-        model=Article,
-        )),
+            model=Article,
+            ),
+            name = "HomeView"
+            ),
 
     # # Index
     # url(r'^(?P<page>\d+)?/?$', ListView.as_view(
@@ -25,15 +31,18 @@ urlpatterns = patterns[]'',
     url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryListView.as_view(
         paginate_by=5,
         model=Category,
-
-        )),
+        ),
+        name='category'
+        ),
 
     # Tags
     url(r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$', TagListView.as_view(
         paginate_by=5,
         model=Tag,
-        )),
+        ),
+        name='tag'
+        ),
 
     # Search posts
-    url(r'^search', 'buc.views.getSearchResults'),
+    url(r'^search', getSearchResults, name='search'),
 ]

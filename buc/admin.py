@@ -1,7 +1,5 @@
-from django.db import models
+from buc import models
 from django.contrib import admin
-
-admin.site.register(models.Article)
 
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):
@@ -9,7 +7,7 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     exclude = ('editor',)
 
-    def save_model(self, request, obj, form. change):
+    def save_model(self, request, obj, form, change):
         obj.Editor = request.user
         obj.save()
 

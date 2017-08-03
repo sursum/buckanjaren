@@ -20,7 +20,7 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
-class Category(models.Model)
+class Category(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField()
     slug = models.SlugField(max_length=40, unique=True, blank=True, null=True)
