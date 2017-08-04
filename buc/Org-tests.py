@@ -57,7 +57,7 @@ class AuthorFactory(factory.django.DjangoModelFactory):
 
     username = 'testuser'
     email = 'user@example.com'
-    password = 'password'
+    password = 'Aaa12345'
 
 
 class FlatPageFactory(factory.django.DjangoModelFactory):
