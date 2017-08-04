@@ -1,0 +1,13 @@
+<div class="container-fluid featurenews-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        <div class="col-lg">
+            <img src="#.jpg"> featurenews           
+            <h1>{{ view.cpyrght }}featurenews.copyright</h1>
+            <ul>
+            {% for article in view.getlatestfeatures %}
+                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
+            {% endfor %}
+            <ul>   
+        </div>
+    </div>    
+</div>

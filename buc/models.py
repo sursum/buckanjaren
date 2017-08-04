@@ -48,7 +48,7 @@ class Article(models.Model):
     editor = models.ForeignKey(User)
     author = models.CharField(max_length=80)
     commentator = models.CharField(max_length=30)    
-    copyright = models.CharField(max_length=30)
+    cpyrght = models.CharField(max_length=30, default='buckanjaren')
     slug = models.SlugField(max_length=40, unique=True)
     site = models.ForeignKey(Site)
     tags = models.ManyToManyField(Tag)

@@ -1,0 +1,15 @@
+{% load custom_markdown %}
+
+<div class="container-fluid categorynews-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        <div class="col-lg">
+            <img src="#.jpg"> categorynews
+            <h3>{{ view.cpyrght }}categorynews.copyright</h3>
+            <ul>
+            {% for article in view.getcategorynews %}
+                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
+            {% endfor %}
+            <ul>   
+        </div>
+    </div>    
+</div>

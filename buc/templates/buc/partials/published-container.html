@@ -1,0 +1,13 @@
+<div class="container-fluid published-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        <div class="col-lg">
+            <img src="#.jpg"> published
+            <h1>{{ view.cpyrght }}published.copyright</h1>
+            <ul>
+            {% for article in view.getpublishedarticles %}
+                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
+            {% endfor %}
+            <ul>   
+        </div>
+    </div>    
+</div>
