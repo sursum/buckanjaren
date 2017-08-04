@@ -1,0 +1,13 @@
+<div class="container-fluid minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        <div class="col-lg minitrue-content">
+            <img src="#.jpg"> minitrue           
+            <h1>{{ view.copyright }}minitrue.copyright</h1>
+            <ul>
+            {% for article in view.getlatestnews %}
+                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
+            {% endfor %}
+            <ul>   
+        </div>
+    </div>    
+</div>

@@ -3,43 +3,89 @@
 {% load custom_markdown %}
 
 {% block content %}
-    <section class="row homeground">
-        <section class="col"></section>
-        <section class="col main-content">
-            <section class="header">
-                <section class="row jumbotron"></section>
-                <section class="row navbar"><div button_class="Buckanjären Sverige Europa Världen USA Politik Ekonomi Krönikor Teknologi Vetenskap Hälsa E-Sport Sport Magasinet"></div></section>
-            </section>
+    <div class="container container-fluid">
+        <div class="jumbotron"></div>
+        {% include 'buc/partials/navbar-top.html' %}
+    </div>
+    <div class="container container-fluid">
+        <div class="row"> <!-- Top row, main feature container and featured Category articles -->
+            <div class="col-lg-9">                
+                <!-- start of main area -->
+                <div class="row"> <!-- Top row, main feature container and featured Category articles -->
+                    <div class="col-lg">
+                        {% include 'buc/partials/mainfeature-container.html' %} <!-- main Feature and follow up -->
+                    </div>                    
+                </div>
+                <div class="row"> <!-- Second row, latest news from Minitrue and featured News carousel and Opinions & Blogs -->
+                    <div class="col-lg-6">
+                        {% include 'buc/partials/minitrue-container.html' %} <!-- Latest News (Minitrue) -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                Feature News Carousel
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                Opinion & Blogs
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+                <div class="row"> <!-- Third row, older featured articles  -->
+                    <div class="col-lg-12">
+                        Old features                            
+                    </div>
+                </div>
+                <!-- end of main area -->
+            </div>        
+            <div class="col-lg-3"> <!-- Side column, Category News container -->
+                <div class="row"> <!-- Top row, category feature container and featured Category articles -->
+                    <div class="col-lg-12">
+                        Category news
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--
+        <div class="row homeground">            
+            <div class="col main-content">                
+                <div class="row media-content">
+                    <div class="row">    
+                        <col-4>main-media-content</col>
+                        <col-4>main Feature and follow up</col>
+                        <col-4>Category features</col>
+                    </div>                
+                         <col-9>main-media-content
+                            <div class="row">
+                                <col-8>main Feature and follow up</col>
+                                <col-4>Category features</col>
+                            </div>
+                            <div class="row">                    
+                                <col-6>Latest News (Minitrue)</col>
+                                <col-6>
+                                    <div class="row">
+                                        <col>Feature News Carousell</col>
+                                    </div>
+                                    <div class="row">
+                                        <col>Opinion & Blogs</col>
+                                    </div>
+                                </col>
+                            </div>
+                            <div class="row">                
+                                <col>Old features</col>                            
+                        </col>
+                        <col-3>right-media-content
+                            <col>Category news</col>
+                            
+                        </col>
+                    </div>
+                </div>
+                <div class="row footer"></div>
+            </div>
+            <div class="col"></div>
+        </div> -->
 
-            <section class="row media-content">
-                <row>                    
-                    <col-md-9>main-media-content
-                        <row>
-                            <col-md-8>main Feature and follow up</col>
-                            <col-md-4>Category features</col>
-                        </row>
-                        <row>                    
-                            <col-md-6>Latest News (Minitrue)</col>
-                            <col-md-6>
-                                <row>
-                                    <col>Feature News Carousell</col>
-                                </row>
-                                <row>
-                                    <col>Opinion & Blogs</col>
-                                </row>
-                            </col>
-                        </row>
-                        <row>                
-                            <col>Old features</col>                            
-                    </col>
-                    <col-md-3>right-media-content
-                        <col>Category news</col>
-                        
-                    </col>                
-                </row>
-            </section>
-            <section class="row footer"></section>
-        </section>
-        <section class="col"></section>
-    </section>
 {% endblock %}
