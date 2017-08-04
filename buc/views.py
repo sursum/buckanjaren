@@ -6,8 +6,9 @@ from buc.models import Category, Article, Tag
 
 # Create your views here.
 class HomeView(ListView):
-    template_name = "homeview.html"
-    
+    template_name = "buc/homeview.html"
+    article = Article()
+
     def main_feature(self):
         return
 

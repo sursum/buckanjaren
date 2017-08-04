@@ -1,5 +1,45 @@
-{% extends "base.html" %}
+{% extends "buc/base.html" %}
 
 {% load custom_markdown %}
 
-{% block content %}{% endblock %}
+{% block content %}
+    <section class="row homeground">
+        <section class="col"></section>
+        <section class="col main-content">
+            <section class="header">
+                <section class="row jumbotron"></section>
+                <section class="row navbar"><div button_class="Buckanjären Sverige Europa Världen USA Politik Ekonomi Krönikor Teknologi Vetenskap Hälsa E-Sport Sport Magasinet"></div></section>
+            </section>
+
+            <section class="row media-content">
+                <row>
+                    <col-md-9>main-media-content
+                        <row>
+                            <col-md-8>main Feature and follow up</col>
+                            <col-md-4>Category features</col>
+                        </row>
+                        <row>                    
+                            <col-md-6>Latest News (Minitrue)</col>
+                            <col-md-6>
+                                <row>
+                                    <col>Feature News Carousell</col>
+                                </row>
+                                <row>
+                                    <col>Opinion & Blogs</col>
+                                </row>
+                            </col>
+                        </row>
+                        <row>                
+                            <col>Old features</col>                            
+                    </col>
+                    <col-md-3>right-media-content
+                        <col>Category news</col>
+                        
+                    </col>                
+                </row>
+            </section>
+            <section class="row footer"></section>
+        </section>
+        <section class="col"></section>
+    </section>
+{% endblock %}
