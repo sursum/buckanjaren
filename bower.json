@@ -10,10 +10,14 @@
     "bower_components",
     "static/bower_components",
     "test",
-    "tests"
+    "tests",
+    "buc/static/bower_components"
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
     "html5-boilerplate": "^5.3.0"
-  }
+  },
+  "authors": [
+    "sursum <chrismakoundoul@gmail.com>"
+  ]
 }
