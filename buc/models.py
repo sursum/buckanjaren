@@ -58,7 +58,7 @@ class Article(models.Model):
     text = models.TextField()
     comment = models.TextField()
     editor = models.ForeignKey(User)
-    author = models.ForeignKey(Profile)
+    creator = models.ForeignKey(Profile)
     commentator = models.CharField(max_length=30)    
     cpyrght = models.CharField(max_length=30, default='buckanjaren')
     slug = models.SlugField(max_length=40, unique=True)
