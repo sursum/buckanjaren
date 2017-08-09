@@ -5,5 +5,8 @@ staticfiles
 buc/static/bower_components
 # Text backups
 *.bak
-
+buckanjaren/include/python3.5m
+buc/migrations
+buckanjaren/lib
+buckanjaren_env
 # Database
