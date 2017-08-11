@@ -1,16 +1,17 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from buc.models import Category, Article, Tag
 
 # Create your views here.
 class HomeView(ListView):
     template_name = "buc/homeview.html"
     article = Article()
+    title ="HomeView"
 
-    def main_feature(self):
-        return
+    def mainfeature(self):        
+        return Article.objects.all()
 
     def minitrue(self):
         return
@@ -22,6 +23,9 @@ class HomeView(ListView):
         return
     def dockyard(self):
         return
+
+#class ArticleView(DetailView):
+     #   return
 
 class CategoryListView(ListView):
     def get_queryset(self):

@@ -4,17 +4,24 @@
             <img src="#.jpg" height="200px" width="300px">            
         </div>
         <div class="col-lg-5">
-            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.title }}feature.title </a>
-            <br>
-            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.teaser_text }}feature.teaser_text</a>           
+            <ul>
+                {% for article in view.mainfeature %}
+                    <li>Title:{{ article.title }}</li>
+                    <li>{{ article.text }}</li>
+                    <li>{{ article.created_date.year }}</li>                    
+                    <li>{{ article.created_date.day }}</li>
+                {% endfor %}
+            <ul>
+            <!-- <br>
+            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.teaser_text }}feature.teaser_text</a>            -->
         </div>
     </div>
-    <div class="row mainfeature-comment">
+    <!-- <div class="row mainfeature-comment">
         <div class="col-lg-6">
             <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.comment }}feature.comment</a>
         </div>
         <div class="col-lg-6">
             <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.related }}feature.related</a>
         </div>
-    </div>
+    </div> -->
 </div>

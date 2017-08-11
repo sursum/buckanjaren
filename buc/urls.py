@@ -8,24 +8,21 @@ from django.contrib.sitemaps.views import sitemap
 
 
 urlpatterns = [
-    # Index
-    url('^$', HomeView.as_view(
-            model=Article,
-            ),
-            name = "HomeView"
-            ),
+    
 
-    # # Index
-    # url(r'^(?P<page>\d+)?/?$', ListView.as_view(
-    #     model=Article,
-    #     paginate_by=5,
-    #     )),
+    # Index
+    #url(r'^(?P<page>\d+)?/?$', HomeView.as_view(
+    #    model=Article,
+    #    paginate_by=5,
+    #    )),
 
 
     # Individual posts
-    url(r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$', DetailView.as_view(
+    url(r'^(?P<published_date__year>\d{4})/(?P<published_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$', DetailView.as_view(
         model=Article,
-        )),
+        ),
+        name='article'
+        ),
 
     # Categories
     url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryListView.as_view(
@@ -45,4 +42,11 @@ urlpatterns = [
 
     # Search posts
     url(r'^search', getSearchResults, name='search'),
+
+    # Home page
+    url('^$', HomeView.as_view(
+            model=Article,
+            ),
+            name = "HomeView"
+            ),
 ]
