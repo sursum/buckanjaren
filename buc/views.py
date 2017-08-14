@@ -42,7 +42,7 @@ class TagListView(ListView):
 
         try:
             tag = Tag.objects.get(slug=slug)
-            return tag.post_set.all()
+            return tag.article_set.all()
         except Tag.DoesNotExist:
             return Article.objects.none()
 

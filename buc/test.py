@@ -490,32 +490,6 @@ class ArticleViewTest(BaseAcceptanceTest):
 
         self.client = Client()
 
-    # def test_index(self):
-    #     # Create the article
-    #     article = Article()
-    #     article.title = 'My first article'
-    #     article.text = 'This is my first blog article'
-    #     article.published_date = timezone.now()
-    #     article.save()
-
-    #     # Check new article saved
-    #     all_articles = Article.objects.all()
-    #     self.assertEquals(len(all_articles), 1)
-
-    #     # Fetch the index
-    #     response = self.client.get('/')
-    #     self.assertEquals(response.status_code, 200)
-
-    #     # Check the article title is in the response   
-    #     self.assertTrue(article.title in response.content.decode('utf-8'))
-
-    #     # Check the article text is in the response
-    #     self.assertTrue(article.text in response.content.decode('utf-8'))
-
-    #     # Check the article date is in the response        
-    #     self.assertTrue(str(article.created_date.year) in response.content.decode('utf-8'))
-    #     self.assertTrue(str(article.created_date.day) in response.content.decode('utf-8'))
-
     def test_index(self):
         # Create the article
         article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
@@ -547,8 +521,7 @@ class ArticleViewTest(BaseAcceptanceTest):
         self.assertTrue(article_tag.name in response.content.decode('utf-8'))
 
         # Check the article date is in the response
-        self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))
-        print(article.published_date.strftime('%b'))
+        self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))        
         self.assertTrue(article.published_date.strftime('%b') in response.content.decode('utf-8'))
         self.assertTrue(str(article.published_date.day) in response.content.decode('utf-8'))
 
@@ -588,7 +561,6 @@ class ArticleViewTest(BaseAcceptanceTest):
 
         # Check the article tag is in the response
         article_tag = all_articles[0].tags.all()[0]
-        print(article_tag)
         self.assertTrue(article_tag.name in response.content.decode('utf-8'))
 
         # Check the article text is in the response
@@ -605,119 +577,95 @@ class ArticleViewTest(BaseAcceptanceTest):
         # Check the correct template was used
         self.assertTemplateUsed(response, 'buc/article_detail.html')
 
-    # def test_category_page(self):
-    #     # Create the article
-    #     article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
+    def test_category_page(self):
+        # Create the article
+        article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
 
-    #     # Check new article saved
-    #     all_articles = Article.objects.all()
-    #     self.assertEqual(len(all_articles), 1)
-    #     only_article = all_articles[0]
-    #     self.assertEqual(only_article, article)
+        # Check new article saved
+        all_articles = Article.objects.all()
+        self.assertEqual(len(all_articles), 1)
+        only_article = all_articles[0]
+        self.assertEqual(only_article, article)
 
-    #     # Get the category URL
-    #     category_url = article.category.get_absolute_url()
+        # Get the category URL
+        category_url = article.category.get_absolute_url()
 
-    #     # Fetch the category
-    #     response = self.client.get(category_url)
-    #     self.assertEqual(response.status_code, 200)
+        # Fetch the category
+        response = self.client.get(category_url)
+        self.assertEqual(response.status_code, 200)
 
-    #     # Check the category name is in the response
-    #     self.assertTrue(article.category.name in response.content.decode('utf-8'))
+        # Check the category name is in the response
+        self.assertTrue(article.category.name in response.content.decode('utf-8'))
 
-    #     # Check the article text is in the response
-    #     self.assertTrue(markdown.markdown(article.text) in response.content.decode('utf-8'))
+        # Check the article text is in the response
+        self.assertTrue(markdown.markdown(article.text) in response.content.decode('utf-8'))
 
-    #     # Check the article date is in the response
-    #     self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))
-    #     self.assertTrue(article.published_date.strftime('%b') in response.content.decode('utf-8'))
-    #     self.assertTrue(str(article.published_date.day) in response.content.decode('utf-8'))
+        # Check the article date is in the response
+        self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))
+        self.assertTrue(article.published_date.strftime('%b') in response.content.decode('utf-8'))
+        self.assertTrue(str(article.published_date.day) in response.content.decode('utf-8'))
 
-    #     # Check the link is marked up properly
-    #     self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog article</a>' in response.content.decode('utf-8'))
+        # Check the link is marked up properly
+        self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog article</a>' in response.content.decode('utf-8'))
 
-    #     # Check the correct template was used
-    #     self.assertTemplateUsed(response, 'buc/category_articleview.html')
+        # Check the correct template was used
+        self.assertTemplateUsed(response, 'buc/article_list.html')
 
-    # def test_nonexistent_category_page(self):
-    #     category_url = '/category/blah/'
-    #     response = self.client.get(category_url)
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue('No articles found' in response.content.decode('utf-8'))
+    def test_nonexistent_category_page(self):
+        category_url = '/category/blah/'
+        response = self.client.get(category_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('No articles found' in response.content.decode('utf-8'))
 
-    # def test_tag_page(self):
-    #     # Create the author
-    #     author = AuthorFactory()
+    def test_tag_page(self):
+        # Create the author
+        author = AuthorFactory()
 
-    #     # Create the site
-    #     site = SiteFactory()
+        # Create the site
+        site = SiteFactory()
 
-    #     # Create the article
-    #     article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
+        # Create the article
+        article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
 
-    #     # Create the tag
-    #     tag = TagFactory()
-    #     article.tags.add(tag)
+        # Create the tag
+        tag = TagFactory()
+        article.tags.add(tag)
 
-    #     # Check new article saved
-    #     all_articles = Article.objects.all()
-    #     self.assertEqual(len(all_articles), 1)
-    #     only_article = all_articles[0]
-    #     self.assertEqual(only_article, article)
+        # Check new article saved
+        all_articles = Article.objects.all()
+        self.assertEqual(len(all_articles), 1)
+        only_article = all_articles[0]
+        self.assertEqual(only_article, article)
 
-    #     # Get the tag URL
-    #     tag_url = article.tags.all()[0].get_absolute_url()
+        # Get the tag URL
+        tag_url = article.tags.all()[0].get_absolute_url()
 
-    #     # Fetch the tag
-    #     response = self.client.get(tag_url)
-    #     self.assertEqual(response.status_code, 200)
+        # Fetch the tag
+        response = self.client.get(tag_url)
+    
+        self.assertEqual(response.status_code, 200)
 
-    #     # Check the tag name is in the response
-    #     self.assertTrue(article.tags.all()[0].name in response.content.decode('utf-8'))
+        # Check the tag name is in the response
+        self.assertTrue(article.tags.all()[0].name in response.content.decode('utf-8'))
 
-    #     # Check the article text is in the response
-    #     self.assertTrue(markdown.markdown(article.text) in response.content.decode('utf-8'))
+        # Check the article text is in the response
+        self.assertTrue(markdown.markdown(article.text) in response.content.decode('utf-8'))
 
-    #     # Check the article date is in the response
-    #     self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))
-    #     self.assertTrue(article.published_date.strftime('%b') in response.content.decode('utf-8'))
-    #     self.assertTrue(str(article.published_date.day) in response.content.decode('utf-8'))
+        # Check the article date is in the response
+        self.assertTrue(str(article.published_date.year) in response.content.decode('utf-8'))
+        self.assertTrue(article.published_date.strftime('%b') in response.content.decode('utf-8'))
+        self.assertTrue(str(article.published_date.day) in response.content.decode('utf-8'))
 
-    #     # Check the link is marked up properly
-    #     self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog article</a>' in response.content.decode('utf-8'))
+        # Check the link is marked up properly
+        self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog article</a>' in response.content.decode('utf-8'))
 
-    #     # Check the correct template was used
-    #     self.assertTemplateUsed(response, 'buc/tag_articleview.html')
+        # Check the correct template was used
+        self.assertTemplateUsed(response, 'buc/article_list.html')
 
-    # def test_nonexistent_tag_page(self):
-    #     tag_url = '/tag/blah/'
-    #     response = self.client.get(tag_url)
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue('No articles found' in response.content.decode('utf-8'))
+    def test_nonexistent_tag_page(self):
+        tag_url = '/tag/blah/'
+        response = self.client.get(tag_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('No articles found' in response.content.decode('utf-8'))
 
-    # def test_clear_cache(self):
-    #     # Create the tag
-
-    #     # Create the first article
-    #     article = ArticleFactory(text='This is [my first blog article](http://127.0.0.1:8000/)')
-    #     tag = TagFactory(name='perl', description='The Perl programming language')
-    #     article.tags.add(tag)
-
-    #     # Check new article saved
-    #     all_articles = Article.objects.all()
-    #     self.assertEqual(len(all_articles), 1)
-
-    #     # Fetch the index
-    #     response = self.client.get(reverse('buc:index'))
-    #     self.assertEqual(response.status_code, 200)
-
-    #     # Create the second article
-    #     article = ArticleFactory(title='My second article',text='This is [my second blog article](http://127.0.0.1:8000/)', slug='my-second-article')
-    #     article.tags.add(tag)
-
-    #     # Fetch the index again
-    #     response = self.client.get(reverse('buc:index'))
-
-    #     # Check second article present
-    #     self.assertTrue('my second blog article' in response.content.decode('utf-8'))
-
+    
