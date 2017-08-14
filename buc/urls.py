@@ -11,15 +11,15 @@ urlpatterns = [
     
 
     # Index
-    #url(r'^(?P<page>\d+)?/?$', HomeView.as_view(
-    #    model=Article,
-    #    paginate_by=5,
-    #    )),
+    # url(r'^(?P<page>\d+)?/?$', DetailView.as_view(
+    #     model=Article,
+    #     paginate_by=5,
+    #     )),
 
 
-    # Individual posts
+    # Individual articles
     url(r'^(?P<published_date__year>\d{4})/(?P<published_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$', DetailView.as_view(
-        model=Article,
+        model=Article,        
         ),
         name='article'
         ),
@@ -44,7 +44,7 @@ urlpatterns = [
     url(r'^search', getSearchResults, name='search'),
 
     # Home page
-    url('^$', HomeView.as_view(
+    url('', HomeView.as_view(
             model=Article,
             ),
             name = "HomeView"

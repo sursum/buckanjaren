@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Buckanjaren Article URLs
-    url(r'', include('buc.urls')),
+    url(r'', include('buc.urls', namespace='buc')),
 
     # Flat pages
     url(r'', include('django.contrib.flatpages.urls')),

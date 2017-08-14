@@ -1,3 +1,5 @@
+{% load custom_markdown %}
+
 <div class="container-fluid mainfeature-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     <div class="row">
         <div class="col-lg-7">  
@@ -7,9 +9,22 @@
             <ul>
                 {% for article in view.mainfeature %}
                     <li>Title:{{ article.title }}</li>
-                    <li>{{ article.text }}</li>
-                    <li>{{ article.created_date.year }}</li>                    
-                    <li>{{ article.created_date.day }}</li>
+                    <li>{{ article.text|custom_markdown }}</li>                    
+                    <li><a href="{{ article.get_absolute_url }}">{{ article.get_absolute_url }}</a></li>
+                    <h3>{{ article.published_date }}</h3>
+                    
+                    {% if article.category %}
+                        <div class="col-md-12">
+                            <a href="{{ article.category.get_absolute_url }}"><span class="label label-primary">{{ article.category.name }}</span></a>
+                        </div>
+                    {% endif %}
+                    {% if article.tags %}                    
+                        <div class="col-md-12">
+                            {% for tag in article.tags.all %}
+                                <a href="{{ tag.get_absolute_url }}"><span class="label label-success">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 {% endfor %}
             <ul>
             <!-- <br>
