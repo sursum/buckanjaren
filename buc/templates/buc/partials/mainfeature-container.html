@@ -1,36 +1,40 @@
 {% load custom_markdown %}
 
 <div class="container-fluid mainfeature-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
-    <div class="row">
-        <div class="col-lg-7">  
-            <img src="#.jpg" height="200px" width="300px">            
+    {% with mainfeatureArticle=view.mainfeature %}
+        <div class="row">
+            <div class="col-lg-4">  
+            </div>
+            <div class="col-lg-8 text-nowrap">
+                <a href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2>
+            </div>
         </div>
-        <div class="col-lg-5">
-            <ul>
-                {% for article in view.mainfeature %}
-                    <li>Title:{{ article.title }}</li>
-                    <li>{{ article.text|custom_markdown }}</li>                    
-                    <li><a href="{{ article.get_absolute_url }}">{{ article.get_absolute_url }}</a></li>
-                    <h3>{{ article.published_date }}</h3>
-                    
-                    {% if article.category %}
-                        <div class="col-md-12">
-                            <a href="{{ article.category.get_absolute_url }}"><span class="label label-primary">{{ article.category.name }}</span></a>
+        <div class="row">
+            <div class="col-lg-7">  
+                <img src="#.jpg" height="300px" width="100%">            
+            </div>        
+            <div class="col-lg-5">                                        
+                <div class="row">
+                    {{ mainfeatureArticle.text|custom_markdown|truncatewords:55 }}</a>
+                    <h6>{{ mainfeatureArticle.published_date }}</h6>
+                </div>
+                <div class="row">
+                    {% if mainfeatureArticle.category or mainfeatureArticle.tags %}
+                        <div class="col-md-6">
+                            <a href="{{ mainfeatureArticle.category.get_absolute_url }}"><span class="label label-primary">{{ mainfeatureArticle.category.name }}</span></a>
                         </div>
-                    {% endif %}
-                    {% if article.tags %}                    
-                        <div class="col-md-12">
-                            {% for tag in article.tags.all %}
+                        <div class="col-md-6">
+                            {% for tag in mainfeatureArticle.tags.all %}
                                 <a href="{{ tag.get_absolute_url }}"><span class="label label-success">{{ tag.name }}</span></a>
                             {% endfor %}
                         </div>
-                    {% endif %}
-                {% endfor %}
-            <ul>
-            <!-- <br>
-            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.teaser_text }}feature.teaser_text</a>            -->
+                    {% endif %}     
+                </div>
+                    <!-- <br>
+                <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.teaser_text }}feature.teaser_text</a>            -->
+            </div>
         </div>
-    </div>
+    {% endwith %}
     <!-- <div class="row mainfeature-comment">
         <div class="col-lg-6">
             <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.comment }}feature.comment</a>

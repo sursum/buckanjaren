@@ -1,12 +1,77 @@
+body {
+  padding-top: 70px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-radius: 0px;
+}
+
+.affix-top {
+    top: 0;
+    width: 100%;
+    position: static;
+    top: -85px;
+    background-color: #fff;
+}
 
 .affix {
-        top: 0;
-        width: 100%;
+    top: 0;
+    position: fixed;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999 !important;    
 }
 
-.affix + .container-fluid {
-        padding-top: 70px;
+/* .container-fluid + .affix {
+    padding-top: 120px;
+    background-color: #fff000;
+} */
+
+/* ************************************************ */
+
+.navbar-custom {
+    background-color:#229922;
+    color: #ffffff;
+    border-radius: 0px;
 }
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+    color: #ffffff;
+    background-color:transparent;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open >a {
+    text-decoration: none;
+    background-color: #33aa33;
+}
+
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+    background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+    background-color:#33aa33;
+}
+
 
 .jumbotron{
     background: url("../images/pirate4_1_FULL.jpg") no-repeat center center;
@@ -16,10 +81,14 @@
     background-size: 100% 100%;
     min-height: 600px;
 
-    margin-bottom: 0px;
-    border: 2px solid blue;
+    margin-bottom: 0px;    
 }
 
+
+/***************** Content ******************/
+.content-body {    
+    padding-top: 10px;    
+}
 
 .first-row {    
     border-bottom: 6px solid #ce6504;  
@@ -90,3 +159,20 @@
     margin-top: 20px;
 
 }
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 14px;}
+}
+
+
+h5{
+    font-size: 1.4em;
+}  

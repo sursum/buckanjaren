@@ -11,8 +11,8 @@ class HomeView(ListView):
     title ="HomeView"
 
     def mainfeature(self):        
-        return Article.objects.all()
-
+        return Article.objects.all().latest('published_date')
+        
     def minitrue(self):
         return
     def latest_news(self):
