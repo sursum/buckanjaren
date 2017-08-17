@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 0px;
 }
 @media (max-width: 979px) {
   body {
@@ -39,7 +39,7 @@ body {
 /* ************************************************ */
 
 .navbar-custom {
-    background-color:#229922;
+    background-color:#3b315e;
     color: #ffffff;
     border-radius: 0px;
 }
@@ -59,7 +59,7 @@ body {
 .navbar-custom .navbar-nav > .active > a:focus,
 .navbar-custom .navbar-nav > .open >a {
     text-decoration: none;
-    background-color: #33aa33;
+    background-color: #3b315e;
 }
 
 .navbar-custom .navbar-brand {
@@ -69,21 +69,24 @@ body {
     background-color:#eeeeee;
 }
 .navbar-custom .icon-bar {
-    background-color:#33aa33;
+    background-color:#3b315e;
 }
 
 
 .jumbotron{
-    background: url("../images/pirate4_1_FULL.jpg") no-repeat center center;
+    background: url("../images/bucmain-FULL.jpg") no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
-    min-height: 600px;
-
+    min-height: 230px;
+    
     margin-bottom: 0px;    
 }
 
+.container .jumbotron, .container-fluid .jumbotron {
+    border-radius: 0px;
+}
 
 /***************** Content ******************/
 .content-body {    
