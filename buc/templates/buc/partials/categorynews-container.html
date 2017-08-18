@@ -1,27 +1,35 @@
+{% load staticfiles %}
 {% load custom_markdown %}
 
 <div class="container-fluid categorynews-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     <div class="row">        
-        <div class="col">
-            <img src="#.jpg"> categorynews
-            <h3>{{ view.cpyrght }}categorynews.copyright</h3>
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <!-- <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a> -->
+            CategoryNews
+        </div>                
+    </div>    
+    <div class="row">          
+        <div class="col-lg">           
             <ul>
             {% for article in view.getcategorynews %}
                 <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
             {% endfor %}
             <ul>   
             <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>        
     </div>    
 </div>

@@ -1,17 +1,22 @@
+{% load staticfiles %}
 {% load custom_markdown %}
 
 <div class="container-fluid mainfeature-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     {% with mainfeatureArticle=view.mainfeature %}
-        <div class="row">
-            <div class="col-lg-4">  
-            </div>
-            <div class="col-lg-8 text-nowrap">
-                <a href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2>
-            </div>
+        <div class="row mainfeature-title-row"> <!-- Title row -->
+            <div class="col-lg-2 mainfeature-title-col"> 
+                <!-- <div class="mainfeature-title-col1"> -->
+                <img class="mainfeature-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+                <!-- </div> -->
+             </div>
+            <div class="col-lg-10 mainfeature-title-col"> 
+                <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}">{{ mainfeatureArticle.title|custom_markdown }}</a>
+                
+            </div>                
         </div>
-        <div class="row">
+        <div class="row"> <!-- content row -->
             <div class="col-lg-7">  
-                <img src="#.jpg" height="300px" width="100%">            
+                <img src="#.jpg" height="250px" width="400">            
             </div>        
             <div class="col-lg-5">                                        
                 <div class="row">
@@ -30,17 +35,19 @@
                         </div>
                     {% endif %}     
                 </div>
-                    <!-- <br>
-                <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.teaser_text }}feature.teaser_text</a>            -->
             </div>
         </div>
+        {% if mainfeatureArticle.commentator %}
+            <div class="row mainfeature-comment">
+                <div class="col-lg-6">
+                    <h5>{{ mainfeatureArticle.commentator }}</h5>
+                    <!-- <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.comment }}feature.comment</a> -->
+                </div>
+                <div class="col-lg-6">
+                    <h5>{{ mainfeatureArticle.commentator }}</h5>
+                    <!-- <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.related }}feature.related</a> -->
+                </div>
+            </div> 
+        {% endif %}
     {% endwith %}
-    <!-- <div class="row mainfeature-comment">
-        <div class="col-lg-6">
-            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.comment }}feature.comment</a>
-        </div>
-        <div class="col-lg-6">
-            <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.related }}feature.related</a>
-        </div>
-    </div> -->
 </div>

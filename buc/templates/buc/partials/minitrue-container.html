@@ -1,20 +1,24 @@
+{% load staticfiles %}
+{% load custom_markdown %}
 
-<img src="#.jpg"> minitrue           
-<h1>{{ view.cpyrght }}minitrue.copyright</h1>
-<ul>
-{% for article in view.getlatestnews %}
-    <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
-{% endfor %}
-<ul>   
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<div class="container-fluid minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        <div class="col-lg-2"> 
+            <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <!-- <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a> -->
+            Etablissemangets Media 
+        </div>                
+    </div>    
+    <div class="row">          
+        <div class="col-lg">           
+            <ul>
+            {% for article in view.getlatestnews %}
+                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
+            {% endfor %}
+            </ul>   
+        </div>        
+    </div>    
+</div>   
