@@ -4,14 +4,17 @@
 
 <div class="container-fluid minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     <div class="row">        
-        <div class="col-lg-2"> 
+        <!-- <div class="col-lg-2"> 
             <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
         </div>
         <div class="col-lg-10"> 
-            <!-- <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a> -->
+            <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a> 
             Etablissemangets Media 
-        </div>                
-    </div>    
+         </div>                 -->
+        <div class="col-lg"> 
+            <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh"><span style="color:darkolivegreen;font-weight:bold">Etablissemangets Media</span>
+        </div>    
+    </div>
     <div class="row">          
         <div class="col-lg">           
             <ul>
