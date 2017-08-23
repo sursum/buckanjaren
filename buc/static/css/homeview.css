@@ -118,7 +118,7 @@ body {
     border-right: 1px solid #bcc4d1; 
 }
 .minitrue-title-graph {
-    
+
 }
 
 .categorynews-container {    
@@ -149,7 +149,16 @@ body {
 
 .mainfeature-title-col {
     position: relative;
+    align-content: right;
+    padding-left: 0px;
 }
+
+.mainfeature-img-col {
+    position: relative;
+    align-content: right;
+    padding-left: 8px;
+}
+
 .mainfeature-title-graph {  
     height: 100%;      
     vertical-align: bottom;
@@ -159,7 +168,11 @@ body {
 img.mainfeature-title-graph {
     position: relative;
     right: 0px;
-    max-width: 50%;  
+    width: 100%;  
+}
+
+.mainfeature-img {
+    padding-left: 8px;
 }
 
 .categorynews-title-graph {
