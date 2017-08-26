@@ -3,16 +3,10 @@
 
 <div class="container-fluid mainfeature-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     {% with mainfeatureArticle=view.mainfeature %}
-        <div class="row mainfeature-title-row"> <!-- Title row -->
-            <div class="col-lg-4 mainfeature-img-col"> 
-                <!-- <div class="mainfeature-title-col1"> -->
-                <img class="mainfeature-title-graph" src="{% static 'images/purple-wave.png' %}" alt="swoosh" > 
-                <!-- </div> -->
-             </div>
-            <div class="col-lg-8 mainfeature-title-col"> 
-                <a class="text-left text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a>
-                
-            </div>                
+        <div class="row mainfeature-title-row"> <!-- Title row -->            
+            <div class="col-lg">
+                <a class="text-left" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown|title|truncatechars:85 }}</h2></a>
+            </div>
         </div>
         <div class="row"> <!-- content row -->
             <div class="col-lg-7 mainfeature-img">  
@@ -20,7 +14,7 @@
             </div>        
             <div class="col-lg-5">                                        
                 <div class="row">
-                    {{ mainfeatureArticle.text|custom_markdown|truncatewords:55 }}</a>
+                    <a class="text-left" href="{{ mainfeatureArticle.get_absolute_url }}">{{ mainfeatureArticle.text|custom_markdown|truncatewords:55 }}</a>
                     <h6>{{ mainfeatureArticle.published_date }}</h6>
                 </div>
                 <div class="row">

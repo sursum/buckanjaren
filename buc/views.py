@@ -17,8 +17,9 @@ class HomeView(ListView):
         return
     def latest_news(self):
         return
-    def carousel_features(self):
-        return
+    def getlatestopinion(self):
+        return Article.objects.all()[:3]
+
     def category_news(self):
         return
     def dockyard(self):
