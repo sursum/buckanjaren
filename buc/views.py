@@ -18,7 +18,7 @@ class HomeView(ListView):
     def latest_news(self):
         return
     def getlatestopinion(self):
-        return Article.objects.all()[:3]
+        return Article.objects.filter(tags__name='Opinion')[:3]
 
     def category_news(self):
         return
