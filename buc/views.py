@@ -8,10 +8,11 @@ from buc.models import Category, Article, Tag
 class HomeView(ListView):
     template_name = "buc/homeview.html"
     article = Article()
-    title ="HomeView"
+    title = "HomeView"
 
-    def mainfeature(self):        
-        return Article.objects.all().latest('published_date')
+    def mainfeature(self): 
+        featuerArticle = Article.objects.filter(tags__name='Feature').latest('published_date')                
+        return featuerArticle
         
     def minitrue(self):
         return
@@ -20,8 +21,51 @@ class HomeView(ListView):
     def getlatestopinion(self):
         return Article.objects.filter(tags__name='Opinion')[:3]
 
-    def category_news(self):
-        return
+    def category_pol(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        print (Article.objects.filter(category__name='Politik') )
+        try:
+            return Article.objects.filter(category__name='Politik') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+    def category_ekon(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        try:
+            return Article.objects.filter(category__name='Ekonomi') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+    def category_kult(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        try:
+            return Article.objects.filter(category__name='Kultur') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+    def category_esport(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        try:
+            return Article.objects.filter(category__name='E-Sport') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+    def category_vet(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        try:
+            return Article.objects.filter(category__name='Vetenskap') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+    
+    def category_halsa(self):
+        # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, Världen
+        try:
+            return Article.objects.filter(category__name='Hälsa') 
+        except Category.DoesNotExist:
+            return Article.objects.none()
+
+
     def dockyard(self):
         return
 

@@ -16,8 +16,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.author.username
 
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
 
 class Tag(models.Model):
@@ -69,7 +69,7 @@ class Article(models.Model):
     site = models.ForeignKey(Site,blank=True,null=True)
     category = models.ForeignKey(Category, blank=True, null=True)
     tags = models.ManyToManyField(Tag,blank=True)
-
+    
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.published_date.year, self.published_date.month, self.slug)
 
