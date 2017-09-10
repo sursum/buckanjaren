@@ -15,9 +15,11 @@ class HomeView(ListView):
         return featuerArticle
         
     def minitrue(self):
-        return
-    def latest_news(self):
-        return
+        return Article.objects.all()[:10]
+
+    def published_media(self):
+        return Article.objects.all()[:10]
+
     def getlatestopinion(self):
         return Article.objects.filter(tags__name='Opinion')[:3]
 
@@ -67,6 +69,10 @@ class HomeView(ListView):
 
 
     def dockyard(self):
+        try:
+            return Article.objects.filter(tags__name='pirate-code') 
+        except Tag.DoesNotExist:
+            return Article.objects.none()
         return
 
 #class ArticleView(DetailView):

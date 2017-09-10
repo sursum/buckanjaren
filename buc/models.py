@@ -5,13 +5,28 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 # Create your models here.
-class Profile(models.Model):
+class ArticlePhoto(models.Model):
+    photo = models.ImageField(upload_to='ArticlePhoto/%Y/%m/%d')
+    photo_thumbnail = ImageSpecField(source='ArticlePhoto/%Y/%m/%d',
+                                      processors=[ResizeToFill(100, 50)],
+                                      format='JPEG',
+                                      options={'quality': 60})    
+
+class Profile(models.Model):    
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, null=True)
     location = models.CharField(max_length=30, blank=True, null=True)
     contact = models.EmailField(blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatars')
+    avatar_thumbnail = ImageSpecField(source='avatar',
+                                      processors=[ResizeToFill(100, 50)],
+                                      format='JPEG',
+                                      options={'quality': 60})
+
 
     def __str__(self):
         return self.author.username
@@ -69,7 +84,8 @@ class Article(models.Model):
     site = models.ForeignKey(Site,blank=True,null=True)
     category = models.ForeignKey(Category, blank=True, null=True)
     tags = models.ManyToManyField(Tag,blank=True)
-    
+    media = models.ManyToManyField(Media,null=True)
+
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.published_date.year, self.published_date.month, self.slug)
 
