@@ -1,0 +1,57 @@
+{% extends "buc/base.html" %}
+
+{% load custom_markdown %}
+
+{% block content %}
+    <div class="container container-fluid">
+        <div class="jumbotron"></div>
+        {% include 'buc/partials/navbar-top.html' %}
+    </div>
+    <div class="container container-fluid content-body">
+        <div class="row"> <!-- Top row, main feature container and featured Category articles -->
+            <div class="col-lg-9">                
+                <!-- start of main area -->
+                <div class="row first-row"> <!-- Top row, main feature container and featured Category articles -->
+                    <div class="col-lg">
+                        {% include 'buc/partials/mainfeature-container.html' %} <!-- main Feature and follow up -->                        
+                    </div>                    
+                </div>
+                <div class="row second-row"> <!-- Second row, latest news from Minitrue and featured News carousel and Opinions & Blogs -->
+                    <div class="col-lg-6">
+                        <div class="minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->                    
+                            {% include 'buc/partials/minitrue-container.html' %} <!-- Latest News (Minitrue) -->
+                        </div>        
+                    </div>
+                    <div class="col-lg-6 opdock-container">                       
+                        <div class="row oprow">
+                            {% include 'buc/partials/opblog-container.html' %} <!-- Opinion & Blogs -->
+                        </div>
+                        <div class="row dockrow">
+                            {% include 'buc/partials/dockland.html' %} <!-- Opinion & Blogs -->
+                        </div>
+                    </div>            
+                </div>
+                <div class="row third-row"> <!-- Third row, older featured articles  -->
+                    <div class="col-lg">
+                        <div class="container-fluid published-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+                            {% include 'buc/partials/published-container.html' %} <!-- Old features -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end of main area -->
+            </div>        
+            <div class="col-lg-3 side-column"> <!-- Side column, Category News container -->
+                {% include 'buc/partials/categorynews-container.html' %} <!-- Category news -->                              
+            </div>
+        </div>
+        <div class="row publisher-row"> <!-- Third row, older featured articles  -->
+            <div class="col-lg">
+                    <div class="container-fluid publisher-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+                        {% include 'buc/partials/publisher.html' %} <!-- Old features -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+ 

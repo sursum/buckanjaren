@@ -1,0 +1,48 @@
+{% load staticfiles %}
+{% load custom_markdown %}
+
+<div class="container-fluid mainfeature-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    {% with mainfeatureArticle=view.mainfeature %}
+        <div class="row mainfeature-title-row"> <!-- Title row -->            
+            <div class="col-lg">
+                <a class="text-left" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown|title|truncatechars:85 }}</h2></a>
+            </div>
+        </div>
+        <div class="row"> <!-- content row -->
+            <div class="col-lg-7 mainfeature-img">  
+                <img src="{{ mainfeatureArticle.photo.url }}" />
+                <!-- <img src="#.jpg" height="250px" width="400"> -->
+            </div>  
+            <div class="col-lg-5">                                        
+                <div class="row">
+                    <a class="text-left" href="{{ mainfeatureArticle.get_absolute_url }}">{{ mainfeatureArticle.text|custom_markdown|truncatewords:55 }}</a>
+                    <h6>{{ mainfeatureArticle.published_date }}</h6>
+                </div>
+                <div class="row">
+                    {% if mainfeatureArticle.category or mainfeatureArticle.tags %}
+                        <div class="col-md-6">
+                            <a href="{{ mainfeatureArticle.category.get_absolute_url }}"><span class="label label-primary">{{ mainfeatureArticle.category.name }}</span></a>
+                        </div>
+                        <div class="col-md-6">
+                            {% for tag in mainfeatureArticle.tags.all %}
+                                <a href="{{ tag.get_absolute_url }}"><span class="label label-success">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}     
+                </div>
+            </div>
+        </div>
+        {% if mainfeatureArticle.commentator %}
+            <div class="row mainfeature-comment">
+                <div class="col-lg-6">
+                    <h5>{{ mainfeatureArticle.commentator }}</h5>
+                    <!-- <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.comment }}feature.comment</a> -->
+                </div>
+                <div class="col-lg-6">
+                    <h5>{{ mainfeatureArticle.commentator }}</h5>
+                    <!-- <a href="{{ view.main_feature.get_abolute_url }}">{{ view.main_feature.related }}feature.related</a> -->
+                </div>
+            </div> 
+        {% endif %}
+    {% endwith %}
+</div>

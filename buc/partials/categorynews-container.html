@@ -1,0 +1,97 @@
+{% load staticfiles %}
+{% load custom_markdown %}
+
+
+<!-- # Politik, Ekonomi, Kultur, E-Sport, Vetenskap, Hälsa, -->
+<div class="container-fluid categorynews-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        {% with ArticleCategories=view.category_pol %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Politik</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>    
+    <div class="row">        
+        {% with ArticleCategories=view.category_ekon %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Ekonomi</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div> 
+    <div class="row">        
+        {% with ArticleCategories=view.category_kult %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Kultur</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>  
+    <div class="row">  
+        {% with ArticleCategories=view.category_esport %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>E-Sport</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>  
+    <div class="row">
+        {% with ArticleCategories=view.category_vet %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Vetenskap</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>  
+    <div class="row">
+        {% with ArticleCategories=view.category_halsa %}
+        <div class="col-lg-2"> 
+            <img class="categorynews-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Hälsa</h3>
+            <ul>
+            {% for story in ArticleCategories %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}story.title</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>  
+</div>

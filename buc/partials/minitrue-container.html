@@ -1,0 +1,20 @@
+{% load staticfiles %}
+{% load custom_markdown %}
+
+<div class="container-fluid minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        {% with Minitrue_storage=view.minitrue %}
+        <div class="col-lg-2"> 
+            <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Ministry of Truth</h3>
+            <ul>
+            {% for story in Minitrue_storage %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>        
+</div>
