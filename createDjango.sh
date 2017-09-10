@@ -147,16 +147,16 @@ addGit () {
 
 installation () {
   echo "installation..."
-  apt-get -y update
-  apt-get -y install postgresql postgresql-contrib
-  apt-get -y install python3-pip python3-dev libpq-dev
-  pip3 install --upgrade pip
-  pip3 install virtualenv 
+  sudo apt-get -y update
+  sudo apt-get -y install postgresql postgresql-contrib
+  sudo apt-get -y install python3-pip python3-dev libpq-dev
+  sudo pip3 install --upgrade pip
+  sudo pip3 install virtualenv 
   
 
   # init Git from PROJDIR
   cd $PROJDIR
-  git init
+  # git init
 
   # Create a virtual environment and activate
   virtualenv --python=python3 $PROJ_ENV_PATH --distribute
