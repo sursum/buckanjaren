@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% load custom_markdown %}
+{% load copyrighttags %}
+
+<div class="container-fluid"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        {% with Publisher=view.publisher %}
+        <div class="col-lg-4"> 
+            <h2>Buckanjären</h2>
+            <div class="textwidget">
+                <br> Buckanjären är en oberoende Pirat-mediaorganisation 
+                som drivs ideellt.
+                <br> Buckanjären följer det pressetiska systemet men är inte formellt medlem.
+                <br>Ansvarig Utgivare: <b>Chris Makoundoul</b>
+            </div>
+        </div>
+        <div class="col-lg-4"> 
+            <h3>Kontakt</h3>
+            <br>E-mail: <b>info(at)buckanjaren.se</b>
+            <br>Twitter: <b>@buckanjaren</b>
+            <br>Facebook: <b>facebook.com\buckanjaren</b>
+        </div>
+        <div class="col-lg-4"> 
+            <h3>Om:</h3>    
+        
+        </div>                
+        {% endwith %}  
+    </div>
+    <div class="row cpy-row">
+        <div class="col-lg text-center "
+        <span class="copyright">Copyright © {% getCopyrightYears %} Buckanjären</span>
+    </div>
+</div>

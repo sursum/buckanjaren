@@ -1,0 +1,20 @@
+{% load staticfiles %}
+{% load custom_markdown %}
+
+<div class="container-fluid dockland-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
+    <div class="row">        
+        {% with Dockland_storage=view.dockyard %}
+        <div class="col-lg-2"> 
+            <img class="dockland-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
+        </div>
+        <div class="col-lg-10"> 
+            <h3>Samhälle</h3>
+            <ul>
+            {% for story in Dockland_storage %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>        
+</div>    

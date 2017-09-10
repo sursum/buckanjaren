@@ -1,27 +1,20 @@
 {% load staticfiles %}
 {% load custom_markdown %}
 
-
 <div class="container-fluid minitrue-container"> <!-- this is to make it responsive to your screen with overide in css: .mainfeature-container -->
     <div class="row">        
-        <!-- <div class="col-lg-2"> 
+        {% with Minitrue_storage=view.minitrue %}
+        <div class="col-lg-2"> 
             <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh" > 
         </div>
         <div class="col-lg-10"> 
-            <a class="text-nowrap" href="{{ mainfeatureArticle.get_absolute_url }}"><h2>{{ mainfeatureArticle.title|custom_markdown }}</h2></a> 
-            Etablissemangets Media 
-         </div>                 -->
-        <div class="col-lg"> 
-            <img class="minitrue-title-graph" src="{% static 'images/pirate-logo-web.jpg' %}" alt="swoosh"><span style="color:darkolivegreen;font-weight:bold">Etablissemangets Media</span>
-        </div>    
-    </div>
-    <div class="row">          
-        <div class="col-lg">           
+            <h3>Ministry of Truth</h3>
             <ul>
-            {% for article in view.getlatestnews %}
-                <li><a href="{{ article.get_abolute_url }}">{{ article.title }}article.title</a></li>
-            {% endfor %}
-            </ul>   
-        </div>        
-    </div>    
-</div>   
+            {% for story in Minitrue_storage %}
+                <li><a href="{{ story.slug }}">{{ story.slug }}</a></li>
+            {% endfor %}        
+            </ul>
+        </div>                
+        {% endwith %}  
+    </div>        
+</div>
