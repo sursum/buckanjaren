@@ -33,10 +33,6 @@ if [[ -z "$PROJDIR" ]]; then
   PROJDIR=${PROJNAME}env
 fi
 
-mkdir $PROJDIR
-cd $PROJDIR
-pwd
-
 setup_django () {
   echo "Setup Django..."
   #. ./settings.py
@@ -147,24 +143,27 @@ addGit () {
 
 installation () {
   echo "installation..."
-  sudo apt-get -y update
-  sudo apt-get -y install postgresql postgresql-contrib
-  sudo apt-get -y install python3-pip python3-dev libpq-dev
-  sudo pip3 install --upgrade pip
-  sudo pip3 install virtualenv 
+  apt-get -y update
+  apt-get -y install postgresql postgresql-contrib
+  apt-get -y install python3-pip python3-dev libpq-dev
+  pip3 install --upgrade pip
+  pip3 install virtualenv 
   
+  sudo -u $SUDO_USER mkdir ${PROJDIR}
+  cd $PROJDIR
+  pwd
 
   # init Git from PROJDIR
-  cd $PROJDIR
+  #cd $PROJDIR
   # git init
 
   # Create a virtual environment and activate
   virtualenv --python=python3 $PROJ_ENV_PATH --distribute
 
   source $PROJ_ENV_PATH/bin/activate
-
+  
   # Install Django
-  pip install django django-toolbelt psycopg2 markdown
+  sudo -u $SUDO_USER pip3 install django django-toolbelt psycopg2 markdown
   django-admin --version
   python -c "import psycopg2"
 
